@@ -3,6 +3,7 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
+  - rubocop-graphql
 
 AllCops:
   TargetRubyVersion: 3.3
@@ -21,6 +22,7 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Exclude:
     - app/controllers/**/*
+    - app/graphql/**/*
     - config/*
 
 # Use the Rails default style
@@ -41,6 +43,20 @@ Style/TrailingCommaInArguments:
 # Allow numbered parameters usage like `reduce { _1 + _2 }`
 Style/NumberedParametersLimit:
   Max: 2
+
+# Prefer code readability over order strictness
+GraphQL/OrderedArguments:
+  Enabled: false
+GraphQL/OrderedFields:
+  Enabled: false
+
+# Disable object description requirement to simplify this example
+GraphQL/ArgumentDescription:
+  Enabled: false
+GraphQL/ObjectDescription:
+  Enabled: false
+GraphQL/FieldDescription:
+  Enabled: false
 
 # Disable some annoying cops
 Metrics/MethodLength:

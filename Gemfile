@@ -21,6 +21,10 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "amazing_print"
 gem "rails_semantic_logger"
 
+# GraphQL Client/Server
+gem "graphql"
+gem "graphql-client"
+
 # Use the database-backed adapters for Rails.cache and Active Job
 gem "solid_cache"
 gem "solid_queue"
@@ -43,6 +47,7 @@ group :development, :test do
 
   # Lint
   gem "rubocop", require: false
+  gem "rubocop-graphql", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
@@ -52,4 +57,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem "graphiql-rails"
 end
