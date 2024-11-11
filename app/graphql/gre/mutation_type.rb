@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Types
+module Gre
   class MutationType < Types::BaseObject
     # TODO: remove me
     field :test_field, String, null: false

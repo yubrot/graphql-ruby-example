@@ -14,7 +14,7 @@ class GraphqlController < ApplicationController
       # Query context goes here, for example:
       # current_user: current_user,
     }
-    result = GraphqlRubyExampleSchema.execute(
+    result = Gre::Schema.execute(
       query,
       variables:,
       context:,

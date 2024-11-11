@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Types
+module Gre
   class QueryType < Types::BaseObject
     field :node, Types::NodeType, null: true do
       argument :id, ID, required: true
