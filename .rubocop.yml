@@ -1,8 +1,51 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  TargetRubyVersion: 3.3
+  NewCops: enable
+  Exclude:
+    - db/schema.rb
+    - vendor/**/*
+    - tmp/**/*
+    - bin/**/*
+    - db/seeds/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/Documentation:
+  Exclude:
+    - app/controllers/**/*
+    - config/*
+
+# Use the Rails default style
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+# Prefer shorter syntax for hashes
+Style/HashSyntax:
+  Enabled: true
+  EnforcedStyle: ruby19_no_mixed_keys
+  EnforcedShorthandSyntax: always
+
+# Prefer consistent comma usage
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+# Allow numbered parameters usage like `reduce { _1 + _2 }`
+Style/NumberedParametersLimit:
+  Max: 2
+
+# Disable some annoying cops
+Metrics/MethodLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Naming/MethodParameterName:
+  Enabled: false
