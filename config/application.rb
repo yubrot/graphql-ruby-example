@@ -37,6 +37,10 @@ module GraphqlRubyExample
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.log_tags = [:request_id]
+    config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
+    config.logger = ActiveSupport::TaggedLogging.logger($stdout)
+    config.rails_semantic_logger.started = Rails.env.local?
 
     # Don't generate system test files.
     config.generators.system_tests = nil

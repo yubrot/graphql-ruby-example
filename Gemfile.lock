@@ -72,6 +72,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
+    amazing_print (1.6.0)
     ast (2.4.2)
     base64 (0.2.0)
     benchmark (0.4.0)
@@ -182,6 +183,10 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_semantic_logger (4.17.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.16)
     railties (8.0.0)
       actionpack (= 8.0.0)
       activesupport (= 8.0.0)
@@ -241,6 +246,8 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     securerandom (0.3.2)
+    semantic_logger (4.16.1)
+      concurrent-ruby (~> 1.0)
     solid_cache (1.0.6)
       activejob (>= 7.2)
       activerecord (>= 7.2)
@@ -302,11 +309,13 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  amazing_print
   brakeman
   debug
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.0)
+  rails_semantic_logger
   rspec-rails
   rubocop
   rubocop-performance
