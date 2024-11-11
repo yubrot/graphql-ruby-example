@@ -54,3 +54,27 @@ jobs:
 
       - name: Run RSpec
         run: bin/rspec
+
+  schema-up-to-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Generate GraphQL schema
+        run: bin/rake graphql:gre:schema:idl
+
+      - name: Ensure that there is no change
+        run: |
+          DIFF="$(git diff HEAD)"
+          if [[ $DIFF != '' ]]; then
+            echo 'Please commit GraphQL schema changes:'
+            git diff HEAD
+            exit 1
+          fi
