@@ -2,7 +2,7 @@
 
 module Gre
   module Enums
-    # Since graphql-ruby removes `Type` suffix from the enum types,
+    # Since graphql-ruby removes `Type` suffix from schema elements,
     # we need to add it back to the class name.
     class ActivityTypeType < BaseEnum
       value "WAKEUP", value: "wakeup"

@@ -20,15 +20,17 @@ module Gre
         raise ArgumentError, "Unexpected object type #{obj.class} for schema type #{self.class}"
       end
 
-      # Resolve a schema type by object type restrictions.
-      # @param candidate_types [Array<Class<GraphQL::Schema::Member>>]
-      # @param obj [Object]
-      def self.resolve_type(candidate_types, obj)
-        candidate_types
-          .filter { |ty| ty.include?(self) && ty.object_types.any? { obj.is_a? _1 } }
-          .sole
-      rescue Enumerable::SoleItemExpectedError
-        nil
+      class << self
+        # Resolve a schema type by object type restrictions.
+        # @param possible_types [Array<Class<GraphQL::Schema::Member>>]
+        # @param obj [Object]
+        def resolve_type(possible_types, obj)
+          possible_types
+            .filter { |ty| ty.include?(self) && ty.object_types.any? { obj.is_a? _1 } }
+            .sole
+        rescue Enumerable::SoleItemExpectedError
+          nil
+        end
       end
     end
   end

@@ -18,8 +18,13 @@ module Gre
 
     # Union and Interface Resolution
     def self.resolve_type(abstract_type, obj, _ctx)
-      Concerns::ObjectTypeRestriction.resolve_type(possible_types(abstract_type), obj)
+      possible_types = possible_types(abstract_type)
+      FieldError.resolve_type(possible_types, obj) ||
+        Concerns::ObjectTypeRestriction.resolve_type(possible_types, obj)
     end
+
+    # Handle a raised FieldError as a GraphQL response
+    rescue_from(FieldError) { |err, _, _, _, _| err }
 
     # Relay-style Object Identification:
 
