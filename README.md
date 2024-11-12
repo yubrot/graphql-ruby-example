@@ -1,24 +1,33 @@
-# README
+# graphql-ruby-example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails 8 example project provides several snippets and suggestions to make good use of [graphql-ruby](https://graphql-ruby.org/).
 
-Things you may want to cover:
+- [Ensuring that the GraphQL schema is committed and up-to-date](./.github/workflows/ci.yml#L58)
+- [Rearranged directory structure under `/app/graphql`](./app/graphql)
+- [Object type restriction](./app/graphql/gre/concerns/object_type_restriction.rb)
+  - [Union and Interface Resolution from object type restrictions](./app/graphql/gre/schema.rb#L19)
 
-* Ruby version
+## Try it
 
-* System dependencies
+```sh
+git clone https://github.com/yubrot/graphql-ruby-example.git
+cd graphql-ruby-example
+bin/setup
+# Open http://127.0.0.1:3000/graphiql on your browser
+```
 
-* Configuration
+## Development
 
-* Database creation
+```sh
+# Lint
+bin/rubocop -a
 
-* Database initialization
+# Test
+bin/rspec
 
-* How to run the test suite
+# Run
+bin/dev
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Update GraphQL Schema
+bin/rake graphql:gre:schema:idl
+```
