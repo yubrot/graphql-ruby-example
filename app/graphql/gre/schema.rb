@@ -2,8 +2,8 @@
 
 module Gre
   class Schema < GraphQL::Schema
-    mutation MutationType
-    query QueryType
+    mutation Mutation
+    query Query
 
     # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
     use GraphQL::Dataloader
@@ -14,6 +14,7 @@ module Gre
     max_complexity 999_999_999
     max_query_string_tokens 5000
     validate_max_errors 100
+    default_max_page_size 50
 
     # Union and Interface Resolution
     def self.resolve_type(_abstract_type, _obj, _ctx)

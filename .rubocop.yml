@@ -84,6 +84,8 @@ Metrics/BlockLength:
   Enabled: false
 Naming/MethodParameterName:
   Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
 
 # Prefer explicit FactoryBot associations like `association :user`
 FactoryBot/AssociationStyle:

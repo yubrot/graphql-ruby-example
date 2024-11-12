@@ -47,6 +47,8 @@ group :development, :test do
 
   gem "faker"
 
+  gem "json_expressions"
+
   gem "factory_bot-blueprint-rspec"
   gem "factory_bot_rails"
 

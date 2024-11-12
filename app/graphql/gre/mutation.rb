@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Gre
-  class MutationType < Types::BaseObject
+  class Mutation < Types::BaseObject
     # TODO: remove me
     field :test_field, String, null: false
     def test_field

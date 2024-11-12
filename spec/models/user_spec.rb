@@ -4,7 +4,7 @@ RSpec.describe User do
   describe "#destroy" do
     subject { user.destroy! }
 
-    letbp(:users, %i[user another_user reaction]) do
+    letbp(:context, %i[user another_user reaction]) do
       let.user do
         activity(:wakeup) { reaction(:anonymous) }
         activity(:sleep)
