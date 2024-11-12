@@ -2,10 +2,6 @@
 
 module Gre
   class Mutation < Types::BaseObject
-    # TODO: remove me
-    field :test_field, String, null: false
-    def test_field
-      "Hello World"
-    end
+    field :register_user, mutation: Mutations::RegisterUser
   end
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :reactions, inverse_of: :reacted_user, dependent: :nullify
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 end
 
 # == Schema Information

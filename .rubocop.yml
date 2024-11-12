@@ -86,6 +86,8 @@ Naming/MethodParameterName:
   Enabled: false
 RSpec/ExampleLength:
   Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
 
 # Prefer explicit FactoryBot associations like `association :user`
 FactoryBot/AssociationStyle:
