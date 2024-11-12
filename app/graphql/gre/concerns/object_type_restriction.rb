@@ -21,15 +21,15 @@ module Gre
       end
 
       class << self
-        # Resolve a schema type by object type restrictions.
+        # Filter the possible schema types based on object type restrictions.
         # @param possible_types [Array<Class<GraphQL::Schema::Member>>]
         # @param obj [Object]
-        def resolve_type(possible_types, obj)
-          possible_types
-            .filter { |ty| ty.include?(self) && ty.object_types.any? { obj.is_a? _1 } }
-            .sole
-        rescue Enumerable::SoleItemExpectedError
-          nil
+        # @return [Array<Class<GraphQL::Schema::Member>>]
+        def filter_types(possible_types, obj)
+          filtered_possible_types = possible_types.filter do |ty|
+            ty.include?(self) && ty.object_types.any? { obj.is_a? _1 }
+          end
+          filtered_possible_types.presence || possible_types
         end
       end
     end

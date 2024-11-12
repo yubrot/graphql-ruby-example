@@ -19,8 +19,11 @@ module Gre
     # Union and Interface Resolution
     def self.resolve_type(abstract_type, obj, _ctx)
       possible_types = possible_types(abstract_type)
-      FieldError.resolve_type(possible_types, obj) ||
-        Concerns::ObjectTypeRestriction.resolve_type(possible_types, obj)
+      possible_types = FieldError.filter_types(possible_types, obj)
+      possible_types = Concerns::ObjectTypeRestriction.filter_types(possible_types, obj)
+      possible_types.sole
+    rescue Enumerable::SoleItemExpectedError
+      nil
     end
 
     # Handle a raised FieldError as a GraphQL response
