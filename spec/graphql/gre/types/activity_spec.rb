@@ -9,17 +9,18 @@ RSpec.describe Gre::Types::Activity, type: :request do
   let(:query) do
     <<~GRAPHQL
       query($id: ID!) {
-        activity(id: $id) {
-          id
-          type
-          memo
-          user { id }
-          reactions { id }
+        node(id: $id) {
+          ... on Activity {
+            type
+            memo
+            user { id }
+            reactions { id }
+          }
         }
       }
     GRAPHQL
   end
-  let(:variables) { { id: activity.id.to_s } }
+  let(:variables) { { id: activity.to_gid_param } }
   letbp(:activity, %i[reactions]) do
     activity do
       let.reactions = [reaction, reaction]
@@ -31,8 +32,7 @@ RSpec.describe Gre::Types::Activity, type: :request do
       status: 200,
       parsed_body: match_json_expression(
         data: {
-          activity: {
-            id: activity.to_gid_param,
+          node: {
             type: activity.type.upcase,
             memo: activity.memo,
             user: { id: activity.user.to_gid_param },

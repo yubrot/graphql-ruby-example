@@ -17,10 +17,8 @@ module Gre
     default_max_page_size 50
 
     # Union and Interface Resolution
-    def self.resolve_type(_abstract_type, _obj, _ctx)
-      # TODO: Implement this method
-      # to return the correct GraphQL object type for `obj`
-      raise(GraphQL::RequiredImplementationMissingError)
+    def self.resolve_type(abstract_type, obj, _ctx)
+      Concerns::ObjectTypeRestriction.resolve_type(possible_types(abstract_type), obj)
     end
 
     # Relay-style Object Identification:
@@ -34,7 +32,9 @@ module Gre
     # Given a string UUID, find the object
     def self.object_from_id(global_id, _query_ctx)
       # For example, use Rails' GlobalID library (https://github.com/rails/globalid):
-      GlobalID.find(global_id)
+      GlobalID::Locator.locate(global_id)
+    rescue ActiveRecord::RecordNotFound
+      nil
     end
   end
 end

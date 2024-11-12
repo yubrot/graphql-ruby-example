@@ -9,17 +9,18 @@ RSpec.describe Gre::Types::User, type: :request do
   let(:query) do
     <<~GRAPHQL
       query($id: ID!) {
-        user(id: $id) {
-          id
-          name
-          email
-          activities { edges { node { id } } }
-          reactions { id }
+        node(id: $id) {
+          ... on User {
+            name
+            email
+            activities { edges { node { id } } }
+            reactions { id }
+          }
         }
       }
     GRAPHQL
   end
-  let(:variables) { { id: user.id.to_s } }
+  let(:variables) { { id: user.to_gid_param } }
   letbp(:context, %i[user activities another_user_activities]) do
     let.user do
       let.activities = [activity, activity]
@@ -37,8 +38,7 @@ RSpec.describe Gre::Types::User, type: :request do
       status: 200,
       parsed_body: match_json_expression(
         data: {
-          user: {
-            id: user.to_gid_param,
+          node: {
             name: user.name,
             email: user.email,
             activities: {

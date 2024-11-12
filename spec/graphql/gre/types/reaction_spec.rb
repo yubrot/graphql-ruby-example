@@ -9,17 +9,18 @@ RSpec.describe Gre::Types::Reaction, type: :request do
   let(:query) do
     <<~GRAPHQL
       query($id: ID!) {
-        reaction(id: $id) {
-          id
-          message
-          activity { id }
-          reactedUser { id }
-          isAnonymous
+        node(id: $id) {
+          ... on Reaction {
+            message
+            activity { id }
+            reactedUser { id }
+            isAnonymous
+          }
         }
       }
     GRAPHQL
   end
-  let(:variables) { { id: reaction.id.to_s } }
+  let(:variables) { { id: reaction.to_gid_param } }
   let(:reaction) { create(:reaction) }
 
   it "returns reaction data" do
@@ -27,8 +28,7 @@ RSpec.describe Gre::Types::Reaction, type: :request do
       status: 200,
       parsed_body: match_json_expression(
         data: {
-          reaction: {
-            id: reaction.to_gid_param,
+          node: {
             message: reaction.message,
             activity: { id: reaction.activity.to_gid_param },
             reactedUser: { id: reaction.reacted_user.to_gid_param },
