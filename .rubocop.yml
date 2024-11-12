@@ -4,6 +4,8 @@ require:
   - rubocop-rspec
   - rubocop-rspec_rails
   - rubocop-graphql
+  - rubocop-factory_bot
+
 
 AllCops:
   TargetRubyVersion: 3.3
@@ -15,15 +17,29 @@ AllCops:
     - bin/**/*
     - db/seeds/**/*
 
+RSpec:
+  Language:
+    Helpers:
+      - let_blueprint
+      - let_blueprint_build
+      - let_blueprint_create
+      - letbp
+      - let_blueprint!
+      - let_blueprint_build!
+      - let_blueprint_create!
+      - letbp!
+
 Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always
 
 Style/Documentation:
   Exclude:
+    - app/models/**/*
     - app/controllers/**/*
     - app/graphql/**/*
     - config/*
+    - db/migrate/*
 
 # Use the Rails default style
 Style/StringLiterals:
@@ -65,3 +81,7 @@ Metrics/BlockLength:
   Enabled: false
 Naming/MethodParameterName:
   Enabled: false
+
+# Prefer explicit FactoryBot associations like `association :user`
+FactoryBot/AssociationStyle:
+  EnforcedStyle: explicit
