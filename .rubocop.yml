@@ -60,6 +60,9 @@ Style/TrailingCommaInArguments:
 Style/NumberedParametersLimit:
   Max: 2
 
+RSpec/NamedSubject:
+  EnforcedStyle: named_only
+
 # Prefer code readability over order strictness
 GraphQL/OrderedArguments:
   Enabled: false

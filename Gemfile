@@ -47,8 +47,8 @@ group :development, :test do
 
   gem "faker"
 
-  gem "factory_bot_rails"
   gem "factory_bot-blueprint-rspec"
+  gem "factory_bot_rails"
 
   # Lint
   gem "rubocop", require: false
