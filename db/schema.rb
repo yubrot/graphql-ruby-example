@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_11_174938) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_13_134622) do
   create_table "activities", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "type", null: false
     t.string "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_activities_on_created_at"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 

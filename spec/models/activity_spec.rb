@@ -19,3 +19,20 @@ RSpec.describe Activity do
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: activities
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer          not null
+#  type       :string           not null
+#  memo       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_activities_on_created_at  (created_at)
+#  index_activities_on_user_id     (user_id)
+#
