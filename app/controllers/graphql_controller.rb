@@ -8,10 +8,12 @@ class GraphqlController < ApplicationController
 
   def execute
     variables = prepare_variables(params[:variables])
-    query = params[:query]
     operation_name = params[:operationName]
     context = { current_user: }
-    result = Gre::Schema.execute(query, variables:, context:, operation_name:)
+    query = GraphQL::Query.new(Gre::Schema, params[:query], variables:, operation_name:, context:)
+    result = ActiveRecord::Base.connected_to(role: query.mutation? ? :writing : :reading) do
+      GraphQL::Execution::Interpreter.run_all(query.schema, [query])[0]
+    end
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?

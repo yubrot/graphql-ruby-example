@@ -82,6 +82,8 @@ GraphQL/FieldDescription:
   Enabled: false
 
 # Disable some annoying cops
+Metrics/AbcSize:
+  Enabled: false
 Metrics/MethodLength:
   Enabled: false
 Metrics/BlockLength:

@@ -4,21 +4,35 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem "sqlite3"
 #
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+default:
+  primary_default: &primary_default
+    adapter: sqlite3
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+  secondary_default: &secondary_default
+    adapter: sqlite3
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+    replica: true
 
 development:
-  <<: *default
-  database: storage/development.sqlite3
+  primary:
+    <<: *primary_default
+    database: storage/development.sqlite3
+  secondary:
+    <<: *secondary_default
+    database: storage/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: storage/test.sqlite3
+  primary:
+    <<: *primary_default
+    database: storage/test.sqlite3
+  secondary:
+    <<: *secondary_default
+    database: storage/test.sqlite3
 
 
 # SQLite3 write its data on the local filesystem, as such it requires
@@ -29,9 +43,12 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   primary:
-    <<: *default
+    <<: *primary_default
+    # database: path/to/persistent/storage/production.sqlite3
+  secondary:
+    <<: *secondary_default
     # database: path/to/persistent/storage/production.sqlite3
   cache:
-    <<: *default
+    <<: *primary_default
     # database: path/to/persistent/storage/production_cache.sqlite3
     migrations_paths: db/cache_migrate
