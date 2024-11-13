@@ -36,8 +36,8 @@ RSpec.describe Gre::Types::Activity, type: :request do
             type: activity.type.upcase,
             memo: activity.memo,
             user: { id: activity.user.to_gid_param },
-            reactions: activity.reactions.map { { id: _1.to_gid_param } }
-          }
+            reactions: activity.reactions.map { { id: _1.to_gid_param } },
+          },
         },
       ),
     )

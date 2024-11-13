@@ -32,8 +32,8 @@ RSpec.describe Gre::Types::Reaction, type: :request do
             message: reaction.message,
             activity: { id: reaction.activity.to_gid_param },
             reactedUser: { id: reaction.reacted_user.to_gid_param },
-            isAnonymous: reaction.anonymous?
-          }
+            isAnonymous: reaction.anonymous?,
+          },
         },
       ),
     )

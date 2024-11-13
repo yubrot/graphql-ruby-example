@@ -28,7 +28,7 @@ RSpec.describe Gre::Types::User, type: :request do
     user do
       let.another_user_activities = [
         activity { reaction(reacted_user: ref.user) },
-        activity { reaction(reacted_user: ref.user) }
+        activity { reaction(reacted_user: ref.user) },
       ]
     end
   end
@@ -42,10 +42,10 @@ RSpec.describe Gre::Types::User, type: :request do
             name: user.name,
             email: user.email,
             activities: {
-              edges: activities.map { { node: { id: _1.to_gid_param } } }
+              edges: activities.map { { node: { id: _1.to_gid_param } } },
             },
-            reactions: another_user_activities.map { { id: _1.reactions[0].to_gid_param } }
-          }
+            reactions: another_user_activities.map { { id: _1.reactions[0].to_gid_param } },
+          },
         },
       ),
     )

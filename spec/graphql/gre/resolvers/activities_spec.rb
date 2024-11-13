@@ -30,8 +30,8 @@ RSpec.describe Gre::Resolvers::Activities, type: :request do
       parsed_body: match_json_expression(
         data: {
           activities: {
-            edges: activities.map { { node: { id: _1.to_gid_param } } }
-          }
+            edges: activities.map { { node: { id: _1.to_gid_param } } },
+          },
         },
       ),
     )

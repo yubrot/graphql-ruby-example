@@ -53,6 +53,10 @@ Style/HashSyntax:
   EnforcedShorthandSyntax: always
 
 # Prefer consistent comma usage
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 

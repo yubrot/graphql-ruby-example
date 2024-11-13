@@ -8,7 +8,7 @@ class Activity < ApplicationRecord
     breakfast: "breakfast",
     lunch: "lunch",
     dinner: "dinner",
-    sleep: "sleep"
+    sleep: "sleep",
   }.freeze
 
   belongs_to :user

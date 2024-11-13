@@ -43,8 +43,8 @@ RSpec.describe Gre::Mutations::RegisterUser, type: :request do
               __typename: "User",
               id: User.last.to_gid_param,
               name: "Alice",
-              email: "alice@example.com"
-            }
+              email: "alice@example.com",
+            },
           },
         ),
       )
@@ -62,8 +62,8 @@ RSpec.describe Gre::Mutations::RegisterUser, type: :request do
               registerUser: {
                 __typename: "Conflict",
                 code: 409,
-                message: "Conflict"
-              }
+                message: "Conflict",
+              },
             },
           ),
         )
@@ -85,8 +85,8 @@ RSpec.describe Gre::Mutations::RegisterUser, type: :request do
               code: 400,
               message: "Bad input for registering a user",
               name: ["can't be blank"],
-              email: ["is invalid"]
-            }
+              email: ["is invalid"],
+            },
           },
         ),
       )
