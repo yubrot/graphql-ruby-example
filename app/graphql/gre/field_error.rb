@@ -53,9 +53,11 @@ module Gre
         end
       end
 
-      def not_found(message = nil) = new(Errors::NotFound, message:)
+      def bad_request(message = nil) = new(Errors::BadRequest, message:)
 
       def forbidden(message = nil) = new(Errors::Forbidden, message:)
+
+      def not_found(message = nil) = new(Errors::NotFound, message:)
 
       def conflict(message = nil) = new(Errors::Conflict, message:)
     end

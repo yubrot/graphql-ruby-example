@@ -38,20 +38,15 @@ RSpec.describe Gre::Mutations::CreateActivity, type: :request do
 
     it "creates an activity for the user" do
       expect { subject }.to change(Activity, :count).by(1)
-      expect(subject).to have_attributes(
-        status: 200,
-        parsed_body: match_json_expression(
-          data: {
-            createActivity: {
-              __typename: "Activity",
-              id: Activity.last.to_gid_param,
-              memo: "at 08:00",
-              reactions: [],
-              type: "WAKEUP",
-              user: { id: user.to_gid_param },
-            },
-          },
-        ),
+      expect(subject).to have_graphql_response(
+        createActivity: {
+          __typename: "Activity",
+          id: Activity.last.to_gid_param,
+          memo: "at 08:00",
+          reactions: [],
+          type: "WAKEUP",
+          user: { id: user.to_gid_param },
+        },
       )
     end
   end
@@ -59,17 +54,12 @@ RSpec.describe Gre::Mutations::CreateActivity, type: :request do
   context "when the user is not authorized" do
     it "returns a forbidden error" do
       expect { subject }.not_to change(Activity, :count)
-      expect(subject).to have_attributes(
-        status: 200,
-        parsed_body: match_json_expression(
-          data: {
-            createActivity: {
-              __typename: "Forbidden",
-              code: 403,
-              message: "User authorization required",
-            },
-          },
-        ),
+      expect(subject).to have_graphql_response(
+        createActivity: {
+          __typename: "Forbidden",
+          code: 403,
+          message: "User authorization required",
+        },
       )
     end
   end

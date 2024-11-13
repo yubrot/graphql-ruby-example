@@ -13,7 +13,7 @@ RSpec.describe Gre::Types::User, type: :request do
           ... on User {
             name
             email
-            activities { edges { node { id } } }
+            activities { nodes { id } }
             reactions { id }
           }
         }
@@ -34,20 +34,15 @@ RSpec.describe Gre::Types::User, type: :request do
   end
 
   it "returns user data" do
-    expect(subject).to have_attributes(
-      status: 200,
-      parsed_body: match_json_expression(
-        data: {
-          node: {
-            name: user.name,
-            email: user.email,
-            activities: {
-              edges: activities.map { { node: { id: _1.to_gid_param } } },
-            },
-            reactions: another_user_activities.map { { id: _1.reactions[0].to_gid_param } },
-          },
+    expect(subject).to have_graphql_response(
+      node: {
+        name: user.name,
+        email: user.email,
+        activities: {
+          nodes: activities.map { { id: _1.to_gid_param } },
         },
-      ),
+        reactions: another_user_activities.map { { id: _1.reactions[0].to_gid_param } },
+      },
     )
   end
 end

@@ -15,6 +15,7 @@ RSpec.describe Gre::Types::Activity, type: :request do
             memo
             user { id }
             reactions { id }
+            isMeal
           }
         }
       }
@@ -28,18 +29,14 @@ RSpec.describe Gre::Types::Activity, type: :request do
   end
 
   it "returns activity data" do
-    expect(subject).to have_attributes(
-      status: 200,
-      parsed_body: match_json_expression(
-        data: {
-          node: {
-            type: activity.type.upcase,
-            memo: activity.memo,
-            user: { id: activity.user.to_gid_param },
-            reactions: activity.reactions.map { { id: _1.to_gid_param } },
-          },
-        },
-      ),
+    expect(subject).to have_graphql_response(
+      node: {
+        type: activity.type.upcase,
+        memo: activity.memo,
+        user: { id: activity.user.to_gid_param },
+        reactions: activity.reactions.map { { id: _1.to_gid_param } },
+        isMeal: activity.meal?,
+      },
     )
   end
 end

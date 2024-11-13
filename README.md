@@ -9,6 +9,7 @@ This Rails 8 example project provides some snippets and suggestions to make good
 - [FieldError](./app/graphql/gre/field_error.rb): This simplifies resolver implementations, which uses unions to represent possible application errors, e.g. [RegisterUser](./app/graphql/gre/mutations/register_user.rb)
 - Uniformed [Union and Interface Resolution](./app/graphql/gre/schema.rb#L19) based on ObjectTypeRestriction and FieldError
 - [InlineUnionTypes](./app/graphql/gre/concerns//inline_union_types.rb) provides a way to write possible types of unions inline, e.g. [RegisterUser](./app/graphql/gre/mutations/register_user.rb)
+- [`have_graphql_response` matcher](./spec/support/graphql_matchers/have_graphql_response.rb)
 
 ## Run
 

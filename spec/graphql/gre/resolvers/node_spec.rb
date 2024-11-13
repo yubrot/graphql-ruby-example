@@ -22,10 +22,7 @@ RSpec.describe Gre::Resolvers::Node, type: :request do
     let(:id) { build_stubbed(:user).to_gid_param }
 
     it "returns null" do
-      expect(subject).to have_attributes(
-        status: 200,
-        parsed_body: match_json_expression(data: { node: nil }),
-      )
+      expect(subject).to have_graphql_response(node: nil)
     end
   end
 
@@ -33,10 +30,7 @@ RSpec.describe Gre::Resolvers::Node, type: :request do
     let(:id) { create(:user).to_gid_param }
 
     it "returns the object" do
-      expect(subject).to have_attributes(
-        status: 200,
-        parsed_body: match_json_expression(data: { node: { __typename: "User", id: } }),
-      )
+      expect(subject).to have_graphql_response(node: { __typename: "User", id: })
     end
   end
 end

@@ -2,10 +2,10 @@
 
 module Gre
   module Resolvers
-    class Activities < BaseResolver
+    class Timeline < BaseResolver
       type Types::Activity.connection_type, null: false
 
-      def resolve = ::Activity.all
+      def resolve = ::Activity.order(created_at: :desc)
     end
   end
 end

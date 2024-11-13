@@ -24,18 +24,13 @@ RSpec.describe Gre::Types::Reaction, type: :request do
   let(:reaction) { create(:reaction) }
 
   it "returns reaction data" do
-    expect(subject).to have_attributes(
-      status: 200,
-      parsed_body: match_json_expression(
-        data: {
-          node: {
-            message: reaction.message,
-            activity: { id: reaction.activity.to_gid_param },
-            reactedUser: { id: reaction.reacted_user.to_gid_param },
-            isAnonymous: reaction.anonymous?,
-          },
-        },
-      ),
+    expect(subject).to have_graphql_response(
+      node: {
+        message: reaction.message,
+        activity: { id: reaction.activity.to_gid_param },
+        reactedUser: { id: reaction.reacted_user.to_gid_param },
+        isAnonymous: reaction.anonymous?,
+      },
     )
   end
 end

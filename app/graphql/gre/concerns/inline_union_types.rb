@@ -2,7 +2,7 @@
 
 module Gre
   module Concerns
-    # This module introduces a `#possible_types` helper, which can be used in the place of `#type`
+    # This module introduces a #possible_types helper, which can be used in the place of #type
     # to describe union possible types inline.
     module InlineUnionTypes
       extend ActiveSupport::Concern

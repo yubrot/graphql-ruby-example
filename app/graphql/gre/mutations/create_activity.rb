@@ -8,7 +8,7 @@ module Gre
       argument :type, Enums::ActivityTypeType, required: true
       argument :memo, String, required: false
 
-      def resolve(type:, memo:)
+      def resolve(type:, memo: nil)
         current_user!.activities.create!(type:, memo:)
       end
     end

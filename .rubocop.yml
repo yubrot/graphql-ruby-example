@@ -34,12 +34,7 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
 
 Style/Documentation:
-  Exclude:
-    - app/models/**/*
-    - app/controllers/**/*
-    - app/graphql/**/*
-    - config/*
-    - db/migrate/*
+  Enabled: false
 
 # Use the Rails default style
 Style/StringLiterals:
@@ -93,6 +88,8 @@ Naming/MethodParameterName:
 RSpec/ExampleLength:
   Enabled: false
 RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/MultipleMemoizedHelpers:
   Enabled: false
 RSpec/NestedGroups:
   Enabled: false

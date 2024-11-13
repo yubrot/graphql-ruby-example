@@ -3,7 +3,7 @@
 module Gre
   module Concerns
     # This module provides a way to restrict object types that can be used as a resolver result.
-    # This information can also be used to resolve the schema type of the resolver results.
+    # This information can also be used to filter the possible types.
     module ObjectTypeRestriction
       extend ActiveSupport::Concern
 

@@ -27,5 +27,6 @@ end
 #
 # Indexes
 #
-#  index_activities_on_user_id  (user_id)
+#  index_activities_on_created_at  (created_at)
+#  index_activities_on_user_id     (user_id)
 #

@@ -38,10 +38,14 @@ module Gre
       object.to_gid_param
     end
 
-    def self.object_from_id(global_id, _query_ctx)
-      GlobalID::Locator.locate(global_id)
+    def self.object_from_id(...)
+      object_from_id!(...)
     rescue ActiveRecord::RecordNotFound
       nil
+    end
+
+    def self.object_from_id!(global_id, _query_ctx, **locate_options)
+      GlobalID::Locator.locate(global_id, **locate_options)
     end
   end
 end

@@ -18,6 +18,8 @@ class Activity < ApplicationRecord
   enum :type, TYPES, prefix: true, validate: true
 
   def meal? = %w[breakfast lunch dinner].include? type
+
+  # TODO: Add happened_at column, don't use created_at for business logic
 end
 
 # == Schema Information
@@ -33,5 +35,6 @@ end
 #
 # Indexes
 #
-#  index_activities_on_user_id  (user_id)
+#  index_activities_on_created_at  (created_at)
+#  index_activities_on_user_id     (user_id)
 #

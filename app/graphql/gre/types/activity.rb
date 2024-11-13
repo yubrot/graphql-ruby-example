@@ -11,6 +11,7 @@ module Gre
       field :memo, String, null: true
       field :user, Types::User, null: false
       field :reactions, [Types::Reaction], null: false
+      field :is_meal, Boolean, null: false, method: :meal?
     end
   end
 end

@@ -35,18 +35,13 @@ RSpec.describe Gre::Mutations::RegisterUser, type: :request do
 
     it "creates a new user and returns it" do
       expect { subject }.to change(User, :count).by(1)
-      expect(subject).to have_attributes(
-        status: 200,
-        parsed_body: match_json_expression(
-          data: {
-            registerUser: {
-              __typename: "User",
-              id: User.last.to_gid_param,
-              name: "Alice",
-              email: "alice@example.com",
-            },
-          },
-        ),
+      expect(subject).to have_graphql_response(
+        registerUser: {
+          __typename: "User",
+          id: User.last.to_gid_param,
+          name: "Alice",
+          email: "alice@example.com",
+        },
       )
     end
 
@@ -55,17 +50,12 @@ RSpec.describe Gre::Mutations::RegisterUser, type: :request do
 
       it "returns a conflict error" do
         expect { subject }.not_to change(User, :count)
-        expect(subject).to have_attributes(
-          status: 200,
-          parsed_body: match_json_expression(
-            data: {
-              registerUser: {
-                __typename: "Conflict",
-                code: 409,
-                message: "Conflict",
-              },
-            },
-          ),
+        expect(subject).to have_graphql_response(
+          registerUser: {
+            __typename: "Conflict",
+            code: 409,
+            message: "Conflict",
+          },
         )
       end
     end
@@ -76,19 +66,14 @@ RSpec.describe Gre::Mutations::RegisterUser, type: :request do
 
     it "returns a bad input error" do
       expect { subject }.not_to change(User, :count)
-      expect(subject).to have_attributes(
-        status: 200,
-        parsed_body: match_json_expression(
-          data: {
-            registerUser: {
-              __typename: "BadRegisterUserInput",
-              code: 400,
-              message: "Bad input for registering a user",
-              name: ["can't be blank"],
-              email: ["is invalid"],
-            },
-          },
-        ),
+      expect(subject).to have_graphql_response(
+        registerUser: {
+          __typename: "BadRegisterUserInput",
+          code: 400,
+          message: "Bad input for registering a user",
+          name: ["can't be blank"],
+          email: ["is invalid"],
+        },
       )
     end
   end
