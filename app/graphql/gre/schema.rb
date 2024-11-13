@@ -29,6 +29,9 @@ module Gre
     # Handle a raised FieldError as a GraphQL response
     rescue_from(FieldError) { |err, _, _, _, _| err }
 
+    # If you prefer graphql-ruby style authorization, you can do the following:
+    # def self.unauthorized_object(_) = FieldError.forbidden
+
     # Relay-style Object Identification:
 
     def self.id_from_object(object, _type_definition, _query_ctx)

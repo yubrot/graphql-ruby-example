@@ -4,6 +4,7 @@ module Gre
   module Mutations
     class BaseMutation < GraphQL::Schema::RelayClassicMutation
       include Concerns::InlineUnionTypes
+      include Concerns::CurrentUser
 
       argument_class Types::BaseArgument
       field_class Types::BaseField

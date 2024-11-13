@@ -4,6 +4,7 @@ module Gre
   module Types
     class BaseObject < GraphQL::Schema::Object
       include Concerns::ObjectTypeRestriction
+      include Concerns::CurrentUser
 
       edge_type_class Types::BaseEdge
       connection_type_class Types::BaseConnection
