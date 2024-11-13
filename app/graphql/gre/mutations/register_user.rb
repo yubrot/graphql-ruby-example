@@ -3,7 +3,7 @@
 module Gre
   module Mutations
     class RegisterUser < BaseMutation
-      type Unions::RegisterUserResult, null: false
+      possible_types Types::User, Errors::BadRegisterUserInput, Errors::Conflict, null: false
 
       argument :name, String, required: true
       argument :email, String, required: true

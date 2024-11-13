@@ -63,7 +63,7 @@ RSpec.describe Gre::FieldError do
   describe ".filter_types" do
     subject { described_class.filter_types(possible_types, obj) }
 
-    let(:possible_types) { Gre::Unions::RegisterUserResult.possible_types }
+    let(:possible_types) { [Gre::Types::User, Gre::Errors::Forbidden, Gre::Errors::Conflict] }
 
     context "when the object is an instance of FieldError" do
       let(:obj) { described_class.new(error_type) }

@@ -5,8 +5,9 @@ This Rails 8 example project provides some snippets and suggestions to make good
 - [Ensuring that the GraphQL schema is committed and up-to-date](./.github/workflows/ci.yml#L58)
 - Rearranged directory structure under [`/app/graphql/gre/`](./app/graphql/gre/)
 - [ObjectTypeRestriction](./app/graphql/gre/concerns/object_type_restriction.rb): This [prevents unexpected `object` initialization](./app/graphql/gre/types/base_object.rb#L13), e.g. [User](./app/graphql/gre/types/user.rb#L8), [Activity](./app/graphql/gre/types/activity.rb#L8), ..
-- [FieldError](./app/graphql/gre/field_error.rb): This simplifies resolver implementations, which uses unions to represent possible application errors, e.g. [RegisterUser](./app/graphql/gre/mutations/register_user.rb) that returns [RegisterUserResult](./app/graphql/gre/unions/register_user_result.rb)
+- [FieldError](./app/graphql/gre/field_error.rb): This simplifies resolver implementations, which uses unions to represent possible application errors, e.g. [RegisterUser](./app/graphql/gre/mutations/register_user.rb)
 - Uniformed [Union and Interface Resolution](./app/graphql/gre/schema.rb#L19) based on ObjectTypeRestriction and FieldError
+- [InlineUnionTypes](./app/graphql/gre/concerns//inline_union_types.rb) provides a way to write possible types of unions inline
 
 ## Run
 
