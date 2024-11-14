@@ -121,7 +121,7 @@ GEM
     graphql (2.4.3)
       base64
       fiber-storage
-    graphql-client (0.23.0)
+    graphql-client (0.24.0)
       activesupport (>= 3.0)
       graphql (>= 1.13.0)
     i18n (1.14.6)
@@ -311,7 +311,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
-    uri (1.0.1)
+    uri (1.0.2)
     useragent (0.16.10)
     web-console (4.2.1)
       actionview (>= 6.0.0)
