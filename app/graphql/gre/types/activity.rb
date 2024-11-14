@@ -5,7 +5,7 @@ module Gre
     class Activity < BaseObject
       implements Interfaces::Node
 
-      object_types << ::Activity
+      object_types ::Activity
 
       field :type, Enums::ActivityTypeType, null: false
       field :memo, String, null: true

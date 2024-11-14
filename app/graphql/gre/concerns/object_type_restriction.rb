@@ -8,8 +8,9 @@ module Gre
       extend ActiveSupport::Concern
 
       class_methods do
-        def object_types
+        def object_types(*types)
           @object_types ||= []
+          @object_types.concat(types)
         end
       end
 
@@ -26,10 +27,14 @@ module Gre
         # @param obj [Object]
         # @return [Array<Class<GraphQL::Schema::Member>>]
         def filter_types(possible_types, obj)
-          filtered_possible_types = possible_types.filter do |ty|
+          matched_possible_types = possible_types.filter do |ty|
             ty.include?(self) && ty.object_types.any? { obj.is_a? _1 }
           end
-          filtered_possible_types.presence || possible_types
+          matched_possible_types.presence ||
+            # There are no matched types, but at least we can reject types that have explicit object_types.
+            possible_types.reject do |ty|
+              ty.include?(self) && ty.object_types.present?
+            end
         end
       end
     end

@@ -10,7 +10,7 @@ module Gre
 
       def resolve(activity_id:, message:)
         activity = Schema.object_from_id!(activity_id, context, only: ::Activity)
-        ::Reaction.create!(activity:, reacted_user: current_user, message:)
+        activity.reactions.create!(reacted_user: current_user, message:)
       rescue ActiveRecord::RecordNotFound
         raise FieldError.not_found
       rescue ActiveRecord::RecordInvalid

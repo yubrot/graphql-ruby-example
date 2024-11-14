@@ -39,6 +39,7 @@ module Gre
       def filter_types(possible_types, obj)
         # When obj is a FieldError, obj knows what the error type is.
         # Returns it after verifying that it conforms to the schema.
+        # NOTE: Since this filter does not require the above assumption, this filter is basically safe.
         if obj.is_a?(FieldError)
           error_type = obj._error_type
           raise "Unexpected error #{error_type}" unless possible_types.include?(error_type)
@@ -47,7 +48,7 @@ module Gre
         end
 
         # Otherwise, we can exclude error types (types that implements Interfaces::Error).
-        # If this exclusion can eliminate the ambiguity, return the remaining type.
+        # NOTE: This filter requires the above assumption.
         possible_types.reject do |ty|
           ty.implements.any? { _1.abstract_type == Interfaces::Error }
         end

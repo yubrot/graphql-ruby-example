@@ -15,6 +15,7 @@ module Gre
       rescue ActiveRecord::RecordNotUnique
         raise FieldError.conflict
       rescue ActiveRecord::RecordInvalid
+        # TODO: How do we separate the responsibility for encoding user errors?
         raise FieldError.new(
           Errors::BadRegisterUserInput,
           name: user.errors.messages[:name] || [],
