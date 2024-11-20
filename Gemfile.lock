@@ -118,7 +118,7 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.1)
       railties
-    graphql (2.4.3)
+    graphql (2.4.4)
       base64
       fiber-storage
     graphql-client (0.24.0)
