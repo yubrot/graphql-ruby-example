@@ -51,8 +51,9 @@ group :development, :test do
 
   gem "factory_bot-blueprint-rspec"
   gem "factory_bot_rails"
+end
 
-  # Lint
+group :development, :rubocop do
   gem "rubocop", require: false
   gem "rubocop-factory_bot", require: false
   gem "rubocop-graphql", require: false
