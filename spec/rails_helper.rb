@@ -48,6 +48,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   # arbitrary gems may also be filtered via:
-  config.include FactoryBot::Syntax::Methods
+  config.include FactoryBot::With::Methods
   config.include GraphqlMatchers
 end

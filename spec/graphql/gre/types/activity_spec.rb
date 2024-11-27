@@ -22,11 +22,7 @@ RSpec.describe Gre::Types::Activity, type: :request do
     GRAPHQL
   end
   let(:variables) { { id: activity.to_gid_param } }
-  letbp(:activity, %i[reactions]) do
-    activity do
-      let.reactions = [reaction, reaction]
-    end
-  end
+  let(:activity) { create.activity(with_pair.reaction) }
 
   it "returns activity data" do
     expect(subject).to have_graphql_response(

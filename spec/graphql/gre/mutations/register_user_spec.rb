@@ -46,7 +46,7 @@ RSpec.describe Gre::Mutations::RegisterUser, type: :request do
     end
 
     context "when the email has already been taken" do
-      before { create(:user, email: "alice@example.com") }
+      before { create.user(email: "alice@example.com") }
 
       it "returns a conflict error" do
         expect { subject }.not_to change(User, :count)

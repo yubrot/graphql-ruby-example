@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Activity do
-  let(:activity) { build_stubbed(:activity, type:) }
+  let(:activity) { build_stubbed.activity(type:) }
 
   describe "#meal?" do
     subject { activity.meal? }

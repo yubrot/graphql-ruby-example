@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Reaction do
-  let(:reaction) { build_stubbed(:reaction) }
+  let(:reaction) { build_stubbed.reaction }
 
   describe "#anonymous?" do
     subject { reaction.anonymous? }
@@ -11,7 +11,7 @@ RSpec.describe Reaction do
     end
 
     context "when the reacted user missing" do
-      let(:reaction) { build_stubbed(:reaction, :anonymous) }
+      let(:reaction) { build_stubbed.reaction(:anonymous) }
 
       it { is_expected.to be true }
     end

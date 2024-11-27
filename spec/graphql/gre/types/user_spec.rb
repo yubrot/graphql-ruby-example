@@ -21,17 +21,10 @@ RSpec.describe Gre::Types::User, type: :request do
     GRAPHQL
   end
   let(:variables) { { id: user.to_gid_param } }
-  letbp(:context, %i[user activities another_user_activities]) do
-    let.user do
-      let.activities = [activity, activity]
-    end
-    user do
-      let.another_user_activities = [
-        activity { reaction(reacted_user: ref.user) },
-        activity { reaction(reacted_user: ref.user) },
-      ]
-    end
-  end
+  let(:user) { create.user(with_pair.activity) }
+  let(:reactions) { create_pair.reaction(reacted_user: user) }
+
+  before { reactions }
 
   it "returns user data" do
     expect(subject).to have_graphql_response(
@@ -39,9 +32,9 @@ RSpec.describe Gre::Types::User, type: :request do
         name: user.name,
         email: user.email,
         activities: {
-          nodes: activities.map { { id: _1.to_gid_param } },
+          nodes: user.activities.map { { id: _1.to_gid_param } },
         },
-        reactions: another_user_activities.map { { id: _1.reactions[0].to_gid_param } },
+        reactions: reactions.map { { id: _1.to_gid_param } },
       },
     )
   end

@@ -98,16 +98,11 @@ GEM
       tzinfo
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
-    factory_bot-blueprint (0.4.0)
+    factory_bot-with (0.1.0)
       factory_bot (~> 6.0)
-      factrey (~> 0.4.0)
-    factory_bot-blueprint-rspec (0.4.0)
-      factory_bot-blueprint (~> 0.4.0)
-      rspec-core (~> 3.0)
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
-    factrey (0.4.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
     fiber-storage (1.0.0)
@@ -344,7 +339,7 @@ DEPENDENCIES
   annotate
   brakeman
   debug
-  factory_bot-blueprint-rspec
+  factory_bot-with
   factory_bot_rails
   faker
   graphiql-rails

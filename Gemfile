@@ -49,8 +49,8 @@ group :development, :test do
 
   gem "json_expressions"
 
-  gem "factory_bot-blueprint-rspec"
   gem "factory_bot_rails"
+  gem "factory_bot-with"
 end
 
 group :development, :rubocop do

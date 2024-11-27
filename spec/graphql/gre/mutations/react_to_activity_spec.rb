@@ -30,11 +30,11 @@ RSpec.describe Gre::Mutations::ReactToActivity, type: :request do
   let(:input) { { activityId: activity.to_gid_param, message: "hi" } }
 
   context "when the activity exists" do
-    let(:activity) { create(:activity) }
+    let(:activity) { create.activity }
 
     context "when the user is authorized" do
       let(:headers) { { "X-User-Email" => "alice@example.com" } }
-      let(:user) { create(:user, email: "alice@example.com") }
+      let(:user) { create.user(email: "alice@example.com") }
 
       before { user }
 
@@ -84,7 +84,7 @@ RSpec.describe Gre::Mutations::ReactToActivity, type: :request do
   end
 
   context "when the activity does not exist" do
-    let(:activity) { build_stubbed(:activity) }
+    let(:activity) { build_stubbed.activity }
 
     it "returns a not found error" do
       expect { subject }.not_to change(Reaction, :count)

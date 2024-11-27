@@ -21,7 +21,7 @@ RSpec.describe Gre::Types::Reaction, type: :request do
     GRAPHQL
   end
   let(:variables) { { id: reaction.to_gid_param } }
-  let(:reaction) { create(:reaction) }
+  let(:reaction) { create.reaction }
 
   it "returns reaction data" do
     expect(subject).to have_graphql_response(

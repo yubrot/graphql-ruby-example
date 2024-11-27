@@ -32,7 +32,7 @@ RSpec.describe Gre::Mutations::CreateActivity, type: :request do
 
   context "when the user is authorized" do
     let(:headers) { { "X-User-Email" => "alice@example.com" } }
-    let(:user) { create(:user, email: "alice@example.com") }
+    let(:user) { create.user(email: "alice@example.com") }
 
     before { user }
 

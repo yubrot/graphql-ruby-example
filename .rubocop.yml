@@ -16,18 +16,6 @@ AllCops:
     - bin/**/*
     - db/seeds/**/*
 
-RSpec:
-  Language:
-    Helpers:
-      - let_blueprint
-      - let_blueprint_build
-      - let_blueprint_create
-      - letbp
-      - let_blueprint!
-      - let_blueprint_build!
-      - let_blueprint_create!
-      - letbp!
-
 Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always
