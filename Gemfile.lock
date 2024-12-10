@@ -98,7 +98,7 @@ GEM
       tzinfo
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
-    factory_bot-with (0.2.1)
+    factory_bot-with (0.3.0)
       factory_bot (~> 6.0)
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
