@@ -73,9 +73,7 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
     amazing_print (1.6.0)
-    annotate (2.6.5)
-      activerecord (>= 2.3.0)
-      rake (>= 0.8.7)
+    annotaterb (4.13.0)
     ast (2.4.2)
     base64 (0.2.0)
     benchmark (0.4.0)
@@ -339,7 +337,7 @@ PLATFORMS
 
 DEPENDENCIES
   amazing_print
-  annotate
+  annotaterb
   brakeman
   debug
   factory_bot-with

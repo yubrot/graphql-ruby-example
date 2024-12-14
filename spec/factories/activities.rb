@@ -19,14 +19,18 @@ end
 # Table name: activities
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer          not null
-#  type       :string           not null
 #  memo       :string
+#  type       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer          not null
 #
 # Indexes
 #
 #  index_activities_on_created_at  (created_at)
 #  index_activities_on_user_id     (user_id)
+#
+# Foreign Keys
+#
+#  user_id  (user_id => users.id)
 #
