@@ -69,6 +69,12 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Set up Rails app
+        run: bin/setup --skip-server
+
+      - name: Run DB migrations
+        run: bin/rails db:migrate
+
       - name: Generate GraphQL schema
         run: bin/rake graphql:gre:schema:idl
 
@@ -76,7 +82,7 @@ jobs:
         run: |
           DIFF="$(git diff HEAD)"
           if [[ $DIFF != '' ]]; then
-            echo 'Please commit GraphQL schema changes:'
+            echo 'Please commit schema changes:'
             git diff HEAD
             exit 1
           fi
