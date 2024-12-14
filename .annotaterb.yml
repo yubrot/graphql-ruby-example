@@ -1,12 +1,12 @@
 ---
-:position: before
-:position_in_additional_file_patterns: before
-:position_in_class: before
-:position_in_factory: before
-:position_in_fixture: before
-:position_in_routes: before
-:position_in_serializer: before
-:position_in_test: before
+:position: after
+:position_in_additional_file_patterns: after
+:position_in_class: after
+:position_in_factory: after
+:position_in_fixture: after
+:position_in_routes: after
+:position_in_serializer: after
+:position_in_test: after
 :classified_sort: true
 :exclude_controllers: true
 :exclude_factories: false
@@ -38,8 +38,8 @@
 :active_admin: false
 :command:
 :debug: false
-:hide_default_column_types: ''
-:hide_limit_column_types: ''
+:hide_default_column_types: ""
+:hide_limit_column_types: ""
 :ignore_columns:
 :ignore_routes:
 :models: true
@@ -52,7 +52,7 @@
 :classes_default_to_s: []
 :additional_file_patterns: []
 :model_dir:
-- app/models
+  - app/models
 :require: []
 :root_dir:
-- ''
+  - ""
