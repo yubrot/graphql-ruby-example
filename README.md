@@ -2,6 +2,7 @@
 
 This Rails 8 example project provides some snippets and suggestions to make good use of [graphql-ruby](https://graphql-ruby.org/).
 
+- [`graphql-ruby` Error Design and Implementation (Japanese)](https://product.st.inc/entry/2024/11/22/120625)
 - [Ensuring that the GraphQL schema is committed and up-to-date](./.github/workflows/ci.yml#L58)
 - Rearranged directory structure under [`/app/graphql/gre/`](./app/graphql/gre/)
 - Switch `ActiveRecord::Base.connected_to(role:)` by [whether the query is mutation or not](./app/controllers/graphql_controller.rb#L14)
