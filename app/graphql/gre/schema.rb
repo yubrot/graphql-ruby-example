@@ -26,6 +26,12 @@ module Gre
       nil
     end
 
+    # Overrriding `.type_error` since we don't want to use errors in GraphQL response field.
+    # See https://product.st.inc/entry/2024/11/22/120625
+    def self.type_error(err, _ctx)
+      raise err
+    end
+
     # Handle a raised FieldError as a GraphQL response
     rescue_from(FieldError) { |err, _, _, _, _| err }
 
