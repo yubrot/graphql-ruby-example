@@ -23,7 +23,7 @@ module Gre
     attr_reader :_error_type, :_details
 
     # NOTE: Since Exception implements #message, we don't need to reimplement it.
-    def code = @_error_type.code
+    delegate :code, to: :@_error_type
 
     # Resolvers for fields other than `code` and `message` are provided through method_missing.
     def method_missing(name) = @_details.fetch(name) { super }

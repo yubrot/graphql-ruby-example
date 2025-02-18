@@ -9,9 +9,9 @@ module GraphqlMatchers
       @matcher = have_attributes(status: 200, parsed_body: match_json_expression(data:))
     end
 
-    def matches?(actual) = @matcher.matches? actual
+    delegate :matches?, to: :@matcher
 
-    def failure_message = @matcher.failure_message
+    delegate :failure_message, to: :@matcher
   end
 
   def have_graphql_response(...) = HaveGraphqlResponse.new(...)
