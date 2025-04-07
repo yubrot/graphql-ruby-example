@@ -16,9 +16,9 @@ class GraphqlController < ApplicationController
     end
     render json: result
   rescue StandardError => e
-    raise e unless Rails.env.development?
+    return handle_error_in_local(e) if Rails.env.local?
 
-    handle_error_in_development(e)
+    raise
   end
 
   private
@@ -43,7 +43,7 @@ class GraphqlController < ApplicationController
     end
   end
 
-  def handle_error_in_development(e)
+  def handle_error_in_local(e)
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
