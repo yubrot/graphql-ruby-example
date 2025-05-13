@@ -72,7 +72,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    amazing_print (1.7.2)
+    amazing_print (1.8.0)
     annotaterb (4.14.0)
     ast (2.4.3)
     base64 (0.2.0)
@@ -111,7 +111,7 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.4)
       railties
-    graphql (2.5.5)
+    graphql (2.5.6)
       base64
       fiber-storage
       logger
