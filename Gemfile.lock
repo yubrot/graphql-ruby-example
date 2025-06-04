@@ -73,11 +73,11 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
     amazing_print (1.8.1)
-    annotaterb (4.14.0)
+    annotaterb (4.15.0)
     ast (2.4.3)
-    base64 (0.2.0)
-    benchmark (0.4.0)
-    bigdecimal (3.1.9)
+    base64 (0.3.0)
+    benchmark (0.4.1)
+    bigdecimal (3.2.1)
     bindex (0.8.1)
     brakeman (7.0.2)
       racc
@@ -90,7 +90,7 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.6.1)
-    drb (2.2.1)
+    drb (2.2.3)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
@@ -111,11 +111,11 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.5)
       railties
-    graphql (2.5.7)
+    graphql (2.5.8)
       base64
       fiber-storage
       logger
-    graphql-client (0.25.0)
+    graphql-client (0.26.0)
       activesupport (>= 3.0)
       graphql (>= 1.13.0)
     i18n (1.14.7)
@@ -256,7 +256,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.3)
-    rubocop (1.75.7)
+    rubocop (1.75.8)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
