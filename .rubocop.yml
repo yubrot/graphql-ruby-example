@@ -1,13 +1,10 @@
 plugins:
+  - rubocop-factory_bot
+  - rubocop-graphql
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
-
-require:
   - rubocop-rspec_rails
-  - rubocop-graphql
-  - rubocop-factory_bot
-
 
 AllCops:
   NewCops: enable
