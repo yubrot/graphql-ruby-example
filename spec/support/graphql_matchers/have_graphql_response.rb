@@ -51,7 +51,7 @@ module GraphqlMatchers
 
     private
 
-    def failure_with_message(&block)
+    def failure_with_message(&block) # rubocop:disable Naming/PredicateMethod
       @failure_message_handler = block
       false
     end
