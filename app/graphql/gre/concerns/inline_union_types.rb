@@ -8,14 +8,14 @@ module Gre
       extend ActiveSupport::Concern
 
       class_methods do
-        def possible_types(*types, **options)
+        def possible_types(*types, **)
           case types.size
           when 0
             raise ArgumentError, "At least one type is required"
           when 1
-            type(types.first, **options)
+            type(types.first, **)
           else
-            type(generate_union_type(types), **options)
+            type(generate_union_type(types), **)
           end
         end
 

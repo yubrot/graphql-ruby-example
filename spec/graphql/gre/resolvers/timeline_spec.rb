@@ -25,7 +25,7 @@ RSpec.describe Gre::Resolvers::Timeline, type: :request do
   it "returns the list of all activities" do
     expect(subject).to have_graphql_response(
       timeline: {
-        nodes: activities.sort_by(&:created_at).map { { id: _1.to_gid_param } },
+        nodes: activities.sort_by(&:created_at).map { { id: it.to_gid_param } },
       },
     )
   end

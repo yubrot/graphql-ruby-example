@@ -6,7 +6,7 @@ module Gre
     # @param error_type [Class<Interfaces::Error>] GraphQL object type that implements Interfaces::Error interface
     # @param details [Hash] Error details conforms to error_type
     def initialize(error_type, **details)
-      unless error_type < Types::BaseObject && error_type.implements.any? { _1.abstract_type == Interfaces::Error }
+      unless error_type < Types::BaseObject && error_type.implements.any? { it.abstract_type == Interfaces::Error }
         raise ArgumentError, "error_type must be a GraphQL object type that implements Interfaces::Error interface"
       end
       unless error_type.respond_to?(:code) && error_type.respond_to?(:message)
@@ -50,7 +50,7 @@ module Gre
         # Otherwise, we can exclude error types (types that implements Interfaces::Error).
         # NOTE: This filter requires the above assumption.
         possible_types.reject do |ty|
-          ty.implements.any? { _1.abstract_type == Interfaces::Error }
+          ty.implements.any? { it.abstract_type == Interfaces::Error }
         end
       end
 

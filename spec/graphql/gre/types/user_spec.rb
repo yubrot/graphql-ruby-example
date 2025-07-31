@@ -32,9 +32,9 @@ RSpec.describe Gre::Types::User, type: :request do
         name: user.name,
         email: user.email,
         activities: {
-          nodes: user.activities.map { { id: _1.to_gid_param } },
+          nodes: user.activities.map { { id: it.to_gid_param } },
         },
-        reactions: reactions.map { { id: _1.to_gid_param } },
+        reactions: reactions.map { { id: it.to_gid_param } },
       },
     )
   end
