@@ -8,14 +8,14 @@ RSpec.describe Gre::Concerns::ObjectTypeRestriction do
       object_types String
 
       def initialize(object)
-        type_check_object!(object)
+        self.class.accepts_object!(object)
       end
     end
   end
   let(:another_klass) { Class.new { include Gre::Concerns::ObjectTypeRestriction } }
   let(:yet_another_klass) { Class.new }
 
-  describe "#type_check_object!" do
+  describe ".accepts_object!" do
     subject { klass.new(object) }
 
     context "when the object is kind of the specified object type" do

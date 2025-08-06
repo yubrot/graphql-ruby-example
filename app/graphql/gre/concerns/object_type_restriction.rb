@@ -12,13 +12,14 @@ module Gre
           @object_types ||= []
           @object_types.concat(types)
         end
-      end
 
-      # @param obj [Object]
-      def type_check_object!(obj)
-        return if self.class.object_types.empty? || self.class.object_types.any? { obj.is_a? it }
+        def accepts_object?(obj)
+          object_types.empty? || object_types.any? { obj.is_a? it }
+        end
 
-        raise ArgumentError, "Unexpected object type #{obj.class} for schema type #{self.class}"
+        def accepts_object!(obj)
+          accepts_object?(obj) or raise ArgumentError, "Unexpected object type #{obj.class} for schema type #{self}"
+        end
       end
 
       class << self
@@ -27,14 +28,9 @@ module Gre
         # @param obj [Object]
         # @return [Array<Class<GraphQL::Schema::Member>>]
         def filter_types(possible_types, obj)
-          matched_possible_types = possible_types.filter do |ty|
-            ty.include?(self) && ty.object_types.any? { obj.is_a? it }
-          end
-          matched_possible_types.presence ||
-            # There are no matched types, but at least we can reject types that have explicit object_types.
-            possible_types.reject do |ty|
-              ty.include?(self) && ty.object_types.present?
-            end
+          restricted_types, free_types = possible_types.partition { it.include?(self) && it.object_types.present? }
+          # If there is no matched type, at least we can reject restricted types.
+          restricted_types.filter { it.accepts_object?(obj) }.presence || free_types
         end
       end
     end

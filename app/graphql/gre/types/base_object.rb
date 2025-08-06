@@ -11,7 +11,7 @@ module Gre
       field_class Types::BaseField
 
       def initialize(object, ...)
-        type_check_object!(object)
+        self.class.accepts_object!(object)
         super
       end
     end
