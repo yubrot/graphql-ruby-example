@@ -114,7 +114,7 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.5)
       railties
-    graphql (2.5.11)
+    graphql (2.5.12)
       base64
       fiber-storage
       logger
@@ -185,7 +185,7 @@ GEM
     psych (5.2.6)
       date
       stringio
-    puma (7.0.1)
+    puma (7.0.3)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
