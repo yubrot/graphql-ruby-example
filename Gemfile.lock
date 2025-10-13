@@ -72,14 +72,14 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    amazing_print (1.8.1)
+    amazing_print (2.0.0)
     annotaterb (4.19.0)
       activerecord (>= 6.0.0)
       activesupport (>= 6.0.0)
     ast (2.4.3)
     base64 (0.3.0)
     benchmark (0.4.1)
-    bigdecimal (3.2.3)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     brakeman (7.1.0)
       racc
@@ -93,7 +93,7 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.6.2)
     drb (2.2.3)
-    erb (5.0.2)
+    erb (5.1.1)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
@@ -114,7 +114,7 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.5)
       railties
-    graphql (2.5.13)
+    graphql (2.5.14)
       base64
       fiber-storage
       logger
@@ -143,7 +143,7 @@ GEM
       net-smtp
     marcel (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.25.5)
+    minitest (5.26.0)
     net-imap (0.5.10)
       date
       net-protocol
@@ -174,7 +174,7 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
-    pp (0.6.2)
+    pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
     prism (1.5.1)
@@ -189,7 +189,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.2.1)
+    rack (3.2.3)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -233,9 +233,10 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.0)
-    rdoc (6.14.2)
+    rdoc (6.15.0)
       erb
       psych (>= 4.0.0)
+      tsort
     regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
@@ -297,7 +298,7 @@ GEM
     securerandom (0.4.1)
     semantic_logger (4.17.0)
       concurrent-ruby (~> 1.0)
-    solid_cache (1.0.7)
+    solid_cache (1.0.8)
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
@@ -330,7 +331,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
-    uri (1.0.3)
+    uri (1.0.4)
     useragent (0.16.11)
     web-console (4.2.1)
       actionview (>= 6.0.0)
